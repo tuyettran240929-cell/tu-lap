@@ -2,9 +2,14 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tự Lập · Học tập giảm dần AI</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%230f6b5c%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-size=%2216%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22700%22%3ETL%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#0B6B61">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tự Lập">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
 @font-face {
   font-family: 'Be Vietnam Pro';
@@ -387,6 +392,30 @@ h1{letter-spacing:-.02em}h2{letter-spacing:-.01em}
   .side-foot{flex-direction:row;align-items:center;margin:0}
   .side-foot .btn{flex:1;min-height:40px}
   .ring{width:88px;height:88px}.ring>div{width:68px;height:68px}.ring b{font-size:20px}
+}
+@media (max-width:900px){
+  .body>*,.row>*{min-width:0!important;flex:1 1 100%!important}
+  .body{gap:20px;padding-top:20px;padding-bottom:28px}
+  .topbar{padding-top:14px;padding-bottom:14px}
+  .topbar .t{font-size:18px}
+  h1{font-size:24px}
+  .card,.paper{padding:18px}
+  .hero{flex-direction:row}
+  .q-text{font-size:17px}
+  .lesson{font-size:15.5px;line-height:1.7}
+  .opt{padding:12px}
+  .metrics .big{font-size:24px}
+  .bars{gap:12px;height:150px}
+  .tl .time{width:48px}
+  .chat{max-height:320px}
+  .modal{padding:20px}
+}
+@media (max-width:520px){
+  .main,.page{padding:16px}
+  .topbar,.body{padding-left:16px;padding-right:16px}
+  .ring{display:none}
+  .btn{padding:0 18px}
+  .labels span{font-size:11px}
 }
 
 </style>
@@ -1846,7 +1875,7 @@ window.TL = window.TL || {};
             <a class="btn warn" href="#/review">Duyệt ngay</a>
           </div>
           <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><button class="btn muted" data-act="discard">Huỷ bản nháp</button><button class="btn" data-act="confirm">Xác nhận và bắt đầu học</button></div>`
-        : `<p class="muted">Tải bài giảng ở bên trái để xem cấu trúc chương và chủ đề đề xuất. Tiêu đề dạng <code># Chương</code> và <code>## Chủ đề</code> (hoặc “Chương 1…”, “1.1 …”) sẽ được nhận diện tự động.</p>
+        : `<p class="muted">Tải bài giảng lên để xem cấu trúc chương và chủ đề đề xuất. Tiêu đề dạng <code># Chương</code> và <code>## Chủ đề</code> (hoặc “Chương 1…”, “1.1 …”) sẽ được nhận diện tự động.</p>
            <div class="note ok">Muốn xem thử ngay? <a href="#" data-act="sample">Dán bài giảng mẫu</a> hoặc dùng khoá mẫu “Thống kê mô tả cơ bản” trong <a href="#/settings">Cài đặt</a>.</div>`;
       return `<div class="page">
         <header><a class="back" href="#/">← Tiến độ</a><div class="muted small">Bước 1/2 · Nhập nội dung</div><h1 style="margin-top:4px">Tải bài giảng và câu hỏi</h1></header>
@@ -2098,6 +2127,11 @@ Tổng doanh thu bằng giá nhân với lượng bán. Khi cầu co giãn, gi�
   if (document.readyState !== 'loading') render();
 })(window.TL);
 
+</script>
+<script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>

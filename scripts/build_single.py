@@ -13,6 +13,7 @@ def css(m):
     text = re.sub(r'url\("(\.\./fonts/[^"]+)"\)', font, text)
     return f"<style>\n{text}\n</style>"
 
+html = re.sub(r'<link rel="(manifest|apple-touch-icon)"[^>]*>\n?', '', html)
 html = re.sub(r'<link rel="stylesheet" href="([^"]+)">', css, html)
 html = re.sub(r'<script src="([^"]+)"></script>', lambda m: "<script>\n" + (root / m.group(1)).read_text(encoding="utf-8").replace("</script", "<\\/script") + "\n</script>", html)
 out = root / "dist" / "tulap.html"

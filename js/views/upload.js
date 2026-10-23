@@ -43,7 +43,7 @@
             <a class="btn warn" href="#/review">Duyệt ngay</a>
           </div>
           <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><button class="btn muted" data-act="discard">Huỷ bản nháp</button><button class="btn" data-act="confirm">Xác nhận và bắt đầu học</button></div>`
-        : `<p class="muted">Tải bài giảng ở bên trái để xem cấu trúc chương và chủ đề đề xuất. Tiêu đề dạng <code># Chương</code> và <code>## Chủ đề</code> (hoặc “Chương 1…”, “1.1 …”) sẽ được nhận diện tự động.</p>
+        : `<p class="muted">Tải bài giảng lên để xem cấu trúc chương và chủ đề đề xuất. Tiêu đề dạng <code># Chương</code> và <code>## Chủ đề</code> (hoặc “Chương 1…”, “1.1 …”) sẽ được nhận diện tự động.</p>
            <div class="note ok">Muốn xem thử ngay? <a href="#" data-act="sample">Dán bài giảng mẫu</a> hoặc dùng khoá mẫu “Thống kê mô tả cơ bản” trong <a href="#/settings">Cài đặt</a>.</div>`;
       return `<div class="page">
         <header><a class="back" href="#/">← Tiến độ</a><div class="muted small">Bước 1/2 · Nhập nội dung</div><h1 style="margin-top:4px">Tải bài giảng và câu hỏi</h1></header>
