@@ -919,7 +919,7 @@ window.TL = window.TL || {};
       const files = await unzip(await file.arrayBuffer(), (n) => /^ppt\/slides\/slide\d+\.xml$/.test(n));
       const slides = Object.keys(files).sort((a, b) => parseInt(a.match(/\d+/)[0]) - parseInt(b.match(/\d+/)[0]));
       return '# ' + base + '\n' + slides.map((k) => {
-        const paras = (files[k].match(/<a:p>[\s\S]*?<\/a:p>/g) || []).map((p) => (p.match(/<a:t>[\s\S]*?<\/a:t>/g) || []).map(xmlText).join('')).filter(Boolean);
+        const paras = (files[k].match(/<a:p[\s>][\s\S]*?<\/a:p>/g) || []).map((p) => (p.match(/<a:t[\s>][\s\S]*?<\/a:t>/g) || []).map(xmlText).join('')).filter(Boolean);
         return paras.length ? '## ' + paras[0] + '\n' + paras.slice(1).join('\n') : '';
       }).join('\n\n');
     }
