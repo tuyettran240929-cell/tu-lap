@@ -2,6 +2,9 @@
 
 Web app học tập 3 giai đoạn cho mỗi chương: **Học** (AI không giới hạn) → **Luyện tập** (lượt AI giảm dần 5→1 theo chương) → **Kiểm tra** (tắt AI, hẹn giờ, đề biến thể, ghi nhận liêm chính).
 
+## Dùng ngay
+https://tuyettran240929-cell.github.io/tu-lap/ — mở được trên điện thoại và laptop. Trên điện thoại chọn "Thêm vào màn hình chính" để dùng như app (chạy được cả khi mất mạng).
+
 ## Chạy thử
 - Mở trực tiếp `dist/tulap.html` (một file, không cần cài đặt), hoặc
 - `python3 -m http.server 8080` rồi vào http://localhost:8080
