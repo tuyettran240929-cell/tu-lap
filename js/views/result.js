@@ -15,7 +15,7 @@
       const weak = att.weak.length ? att.weak.map((t) => `<li>${esc(TL.ui.topicTitle(ch, t))}</li>`).join('') : '<li>Không có chủ đề dưới 70%</li>';
       const scoreCard = `<section class="card col gap14" style="flex:1;min-width:360px;padding:28px">
           <div class="muted small">Điểm của bạn</div>
-          <div style="font-size:48px;font-weight:700">${att.score}%</div>
+          <div class="result-score">${att.score}%</div>
           <div class="muted">Ngưỡng qua: ${set.testPass}% (cấu hình được)</div>
           <div class="progressbar"><div style="width:${att.score}%;background:${att.passed ? 'var(--accent)' : 'var(--warn)'}"></div></div>
           <h3 style="margin-top:12px">${att.passed ? 'Chủ đề nên củng cố' : 'Phần còn yếu'}</h3>

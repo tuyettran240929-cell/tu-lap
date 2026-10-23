@@ -50,14 +50,14 @@
         <div class="row">
           <section class="col gap16" style="flex:1;min-width:360px">
             <div class="drop" data-drop="lecture">
-              <div style="font-weight:600;margin-bottom:6px">Bài giảng</div>
+              <div class="dicon">${TL.ui.icon('file')}</div><div style="font-weight:600;margin-bottom:6px">Bài giảng</div>
               <div class="muted small" style="margin-bottom:14px">PDF, PPTX, DOCX hoặc văn bản (.txt, .md)</div>
-              <label class="btn">Chọn tệp<input type="file" id="fLecture" accept=".pdf,.pptx,.docx,.txt,.md" hidden></label>
+              <label class="btn">${TL.ui.icon('upload')} Chọn tệp<input type="file" id="fLecture" accept=".pdf,.pptx,.docx,.txt,.md" hidden></label>
               <div class="small" id="lecName" style="margin-top:8px">${esc(S().state.draftName || '')}</div>
               <textarea id="tLecture" rows="5" placeholder="…hoặc dán nội dung bài giảng vào đây">${esc(lectureText)}</textarea>
             </div>
             <div class="drop" data-drop="questions">
-              <div style="font-weight:600;margin-bottom:6px">Câu hỏi (không bắt buộc)</div>
+              <div class="dicon">${TL.ui.icon('sparkles')}</div><div style="font-weight:600;margin-bottom:6px">Câu hỏi (không bắt buộc)</div>
               <div class="muted small" style="margin-bottom:14px">CSV, JSON hoặc dán trực tiếp. Cột: chuong, chu_de, cau_hoi, A, B, C, D, dap_an, giai_thich</div>
               <label class="btn ghost">Chọn tệp hoặc dán<input type="file" id="fQuestions" accept=".csv,.json,.txt" hidden></label>
               <textarea id="tQuestions" rows="3" placeholder="chuong,cau_hoi,A,B,C,D,dap_an">${esc(questionText)}</textarea>

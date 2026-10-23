@@ -45,23 +45,24 @@
     const set = S().state.settings;
     const left = S().aiLeft(ch.id);
     const un = S().unlocked(ch.id);
-    const card = (cls, title, sub, foot) => `<div class="stage ${cls}"><div style="font-weight:600">${title}</div><div class="muted small" style="margin:4px 0 10px">${sub}</div>${foot}</div>`;
+    const ICO = { '1. Học': 'book', '2. Luyện tập': 'target', '3. Kiểm tra': 'shieldCheck' };
+    const card = (cls, title, sub, foot) => `<div class="stage ${cls}"><div class="sh"><span class="sicon">${TL.ui.icon(cls === 'done' ? 'check' : cls === 'lock' ? 'lock' : ICO[title])}</span><div><div class="step">Giai đoạn ${title[0]}</div><div style="font-weight:700">${title.slice(3)}</div></div></div><div class="muted small" style="margin:0 0 6px">${sub}</div>${foot}</div>`;
     const lastAtt = p.s3.attempts[p.s3.attempts.length - 1];
     const c1 = st > 1
       ? card('done', '1. Học', 'AI không giới hạn', `<div class="s" style="color:var(--accent)">Đã qua · quiz đạt ${p.s1.best}%</div><a class="small" href="#/learn/${ch.id}">Xem lại bài giảng</a>`)
-      : card('cur', '1. Học', 'AI không giới hạn', `${p.s1.focus.length ? `<div class="small" style="color:var(--warn)">Ôn lại: ${p.s1.focus.map((t) => esc(TL.ui.topicTitle(ch, t))).join(', ')}</div>` : ''}<a class="s" href="#/learn/${ch.id}">${p.s1.best != null ? 'Tiếp tục học' : 'Bắt đầu học'}</a>`);
+      : card('cur', '1. Học', 'AI không giới hạn', `${p.s1.focus.length ? `<div class="small" style="color:var(--warn)">Ôn lại: ${p.s1.focus.map((t) => esc(TL.ui.topicTitle(ch, t))).join(', ')}</div>` : ''}<a class="s" href="#/learn/${ch.id}">${p.s1.best != null ? 'Tiếp tục học' : 'Bắt đầu học'} ${TL.ui.icon('arrow')}</a>`);
     const review = p.s2.review && !p.s2.review.done;
     const c2 = st < 2
       ? card('lock', '2. Luyện tập', `AI tối đa ${p.s2.quota} lượt`, `<div class="small">Mở khi quiz GĐ1 đạt từ ${set.quizPass}%</div>`)
       : st === 2 || review
-        ? card('cur', '2. Luyện tập', `AI còn ${left}/${review ? p.s2.review.quota : p.s2.quota} lượt`, `<a class="s" href="#/practice/${ch.id}">${review ? 'Ôn phần yếu' : p.s2.runs.length ? 'Tiếp tục luyện tập' : 'Bắt đầu luyện tập'}</a>`)
+        ? card('cur', '2. Luyện tập', `AI còn ${left}/${review ? p.s2.review.quota : p.s2.quota} lượt`, `<a class="s" href="#/practice/${ch.id}">${review ? 'Ôn phần yếu' : p.s2.runs.length ? 'Tiếp tục luyện tập' : 'Bắt đầu luyện tập'} ${TL.ui.icon('arrow')}</a>`)
         : card('done', '2. Luyện tập', `AI đã dùng ${S().aiUsedTotal(ch.id)}/${p.s2.quota} lượt`, `<div class="s" style="color:var(--accent)">Đã qua · đúng ${p.s2.best}%</div><a class="small" href="#/practice/${ch.id}">Luyện thêm</a>`);
     let c3;
     if (st < 3) c3 = card('lock', '3. Kiểm tra', 'Không dùng AI', `<div class="small">Mở khi đúng từ ${set.practiceUnlock}% ở giai đoạn 2</div>`);
     else if (st === 4) c3 = card('done', '3. Kiểm tra', 'Không dùng AI', `<div class="s" style="color:var(--accent)">Đã qua · ${lastAtt.score}%</div><a class="small" href="#/report/${ch.id}">Báo cáo liêm chính</a>`);
     else {
       const cd = TL.ui.cooldownLeft(ch.id);
-      c3 = card('cur', '3. Kiểm tra', `Không dùng AI · ${set.testMinutes} phút`, `${cd ? `<div class="s" style="color:var(--warn)">Thi lại sau <span data-cd="${ch.id}">${hhmm(cd)}</span></div>` : `<a class="s" href="#/test/${ch.id}">${p.s3.attempts.length ? 'Làm đề biến thể' : 'Vào kiểm tra'}</a>`}${lastAtt ? `<a class="small" href="#/result/${ch.id}">Kết quả lần ${p.s3.attempts.length}</a>` : ''}`);
+      c3 = card('cur', '3. Kiểm tra', `Không dùng AI · ${set.testMinutes} phút`, `${cd ? `<div class="s" style="color:var(--warn)">Thi lại sau <span data-cd="${ch.id}">${hhmm(cd)}</span></div>` : `<a class="s" href="#/test/${ch.id}">${p.s3.attempts.length ? 'Làm đề biến thể' : 'Vào kiểm tra'} ${TL.ui.icon('arrow')}</a>`}${lastAtt ? `<a class="small" href="#/result/${ch.id}">Kết quả lần ${p.s3.attempts.length}</a>` : ''}`);
     }
     return `<section class="card">
       <h2 style="margin:0 0 16px">${TL.ui.chLabel(ch)} · ${esc(ch.title)}${un ? '' : ' <span class="pill" style="margin-left:8px">Chưa mở</span>'}</h2>
@@ -76,17 +77,28 @@
       const ch = S().chapter(chId) || S().state.course.chapters[0];
       if (!ch) return TL.ui.withSidebar(null, '<h1>Chưa có khoá học</h1><a class="btn" href="#/upload">Tải bài giảng lên</a>');
       const m = metrics();
+      const cur = S().chapter(S().currentChapterId()) || ch;
+      const cs = S().stageOf(cur.id);
+      const next = cs === 1 ? { href: '#/learn/' + cur.id, label: 'Tiếp tục học' } : cs === 2 || (S().prog(cur.id).s2.review && !S().prog(cur.id).s2.review.done) ? { href: '#/practice/' + cur.id, label: 'Vào luyện tập' } : cs === 3 ? { href: '#/test/' + cur.id, label: 'Vào kiểm tra' } : { href: '#/ch/' + cur.id, label: 'Xem lại khoá học' };
       const fresh = !Object.values(S().state.progress).some((p) => p.s1.best != null);
       return TL.ui.withSidebar(ch.id, `
-        <header><h1 style="margin:0 0 6px">Tiến độ của bạn</h1><p class="muted">Mục tiêu: càng về sau càng ít cần AI.</p></header>
+        <section class="hero">
+          <div style="position:relative;z-index:1;max-width:520px" class="col gap10">
+            <span class="pill" style="background:rgba(255,255,255,.16);color:#fff;align-self:flex-start">${TL.ui.icon('sparkles')} Học giảm dần AI</span>
+            <h1>Tiến độ của bạn</h1>
+            <p>Mục tiêu: càng về sau càng ít cần AI. Bạn đang ở <b style="color:#fff">${TL.ui.chLabel(cur)} · ${esc(cur.title)}</b>.</p>
+            <div><a class="btn" href="${next.href}" style="margin-top:6px">${next.label} ${TL.ui.icon('arrow')}</a></div>
+          </div>
+          <div class="ring" style="--p:${TL.ui.overall()}"><div><b>${TL.ui.overall()}%</b><span>khoá học</span></div></div>
+        </section>
         ${fresh ? `<div class="note ok">Mỗi chương có 3 giai đoạn: <b>Học</b> với AI không giới hạn → <b>Luyện tập</b> với số lượt AI giảm dần theo chương → <b>Kiểm tra</b> không có AI. Bắt đầu từ ${TL.ui.chLabel(ch)} bên dưới.</div>` : ''}
         <section class="metrics">
-          <div class="card"><div class="muted small">Qua giai đoạn 3 ngay lần đầu</div><div class="big" style="margin-top:8px">${m.firstTry}</div></div>
-          <div class="card"><div class="muted small">Chênh lệch điểm GĐ2 – GĐ3</div><div class="big" style="margin-top:8px">${m.gap}</div></div>
-          <div class="card"><div class="muted small">Lượt AI trung bình mỗi chương</div><div class="big" style="margin-top:8px">${m.ai}</div></div>
+          <div class="card metric"><span class="ichip">${TL.ui.icon('trophy')}</span><div><div class="muted small">Qua giai đoạn 3 ngay lần đầu</div><div class="big" style="margin-top:4px">${m.firstTry}</div></div></div>
+          <div class="card metric"><span class="ichip warm">${TL.ui.icon('trend')}</span><div><div class="muted small">Chênh lệch điểm GĐ2 – GĐ3</div><div class="big" style="margin-top:4px">${m.gap}</div></div></div>
+          <div class="card metric"><span class="ichip">${TL.ui.icon('bot')}</span><div><div class="muted small">Lượt AI trung bình mỗi chương</div><div class="big" style="margin-top:4px">${m.ai}</div></div></div>
         </section>
         <section class="card">
-          <h2 style="margin:0 0 4px">Lượt AI đã dùng theo chương</h2>
+          <h2 style="margin:0 0 4px;display:flex;gap:10px;align-items:center"><span class="ichip" style="width:34px;height:34px">${TL.ui.icon('chart')}</span>Lượt AI đã dùng theo chương</h2>
           <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 20px"><p class="muted small">Giai đoạn 2: giảm dần từ 5 xuống 1 lượt.</p>
           <div class="legend"><span><i style="background:var(--warn)"></i>Đã dùng</span><span><i style="border-top:2px dashed var(--grey);height:0"></i>Hạn mức</span><span><i style="background:var(--line)"></i>Chưa bắt đầu</span></div></div>
           <div class="bars">${bars()}</div>

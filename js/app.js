@@ -22,6 +22,7 @@
     const changed = currentKey !== r.key;
     const y = window.scrollY;
     root.innerHTML = view.render(r.params);
+    if (changed) { root.classList.remove('enter'); void root.offsetWidth; root.classList.add('enter'); }
     if (view.mount) view.mount(root, r.params);
     current = { view }; currentKey = r.key;
     if (changed) window.scrollTo(0, 0); else window.scrollTo(0, y);

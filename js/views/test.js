@@ -92,7 +92,7 @@
         if (S().stageOf(id) < 3) block = `Cần đúng từ ${set.practiceUnlock}% ở giai đoạn 2 để mở bài kiểm tra.`;
         else if (p.s3.passed) block = 'Bạn đã qua giai đoạn 3 của chương này.';
         else if (TL.ui.cooldownLeft(id)) block = `Đề biến thể tiếp theo mở sau ${hhmm(TL.ui.cooldownLeft(id))}. Trong lúc chờ, hãy ôn phần yếu ở giai đoạn 2.`;
-        return `<div class="dark"><div class="topbar"><div><a class="back" style="color:var(--dark-muted)" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 3 · Kiểm tra có giám sát</div><div class="t">${esc(ch.title)}</div></div><span class="dpill">AI đã tắt</span></div>
+        return `<div class="dark"><div class="topbar"><div><a class="back" style="color:var(--dark-muted)" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 3 · Kiểm tra có giám sát</div><div class="t">${esc(ch.title)}</div></div><span class="dpill">${TL.ui.icon('botOff')} AI đã tắt</span></div>
           <div class="body"><section class="paper" style="flex:1;max-width:760px">
             <h1>Trước khi bắt đầu</h1>
             <ul style="margin:0;padding-left:20px;line-height:1.9">
@@ -119,7 +119,7 @@
       return `<div class="dark">
         <div class="topbar">
           <div><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 3 · Kiểm tra có giám sát</div><div class="t">Câu ${T.i + 1} / ${T.qs.length}</div></div>
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span class="dpill">AI đã tắt</span><span class="timer ${left < 120 ? 'low' : ''}" id="timer" aria-label="Thời gian còn lại">${mmss(left)}</span></div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span class="dpill">${TL.ui.icon('botOff')} AI đã tắt</span><span class="timer ${left < 120 ? 'low' : ''}" id="timer" aria-label="Thời gian còn lại">${TL.ui.icon('clock')}<span id="timerTxt">${mmss(left)}</span></span></div>
         </div>
         <div class="body">
           <section class="paper" style="flex:2;min-width:420px">
@@ -134,9 +134,9 @@
             <div class="dpanel"><h3>Câu hỏi</h3><div class="qdots">${T.qs.map((_, i) => `<button data-go="${i}" class="${i === T.i ? 'on' : T.answers[i] !== '' ? 'ans' : ''}" aria-label="Câu ${i + 1}">${i + 1}</button>`).join('')}</div></div>
             <div class="dpanel">
               <h3>Công cụ trong trang</h3>
-              <button class="dbtn ${T.tool === 'calc' ? 'on' : ''}" data-tool="calc">Máy tính</button>
-              <button class="dbtn ${T.tool === 'scratch' ? 'on' : ''}" data-tool="scratch">Giấy nháp</button>
-              <button class="dbtn ${T.tool === 'formula' ? 'on' : ''}" data-tool="formula">Bảng công thức</button>
+              <button class="dbtn ${T.tool === 'calc' ? 'on' : ''}" data-tool="calc">${TL.ui.icon('calc')} Máy tính</button>
+              <button class="dbtn ${T.tool === 'scratch' ? 'on' : ''}" data-tool="scratch">${TL.ui.icon('pencil')} Giấy nháp</button>
+              <button class="dbtn ${T.tool === 'formula' ? 'on' : ''}" data-tool="formula">${TL.ui.icon('sigma')} Bảng công thức</button>
               ${tool}
             </div>
             <div class="dpanel" style="gap:8px">
@@ -156,7 +156,7 @@
       tick = setInterval(() => {
         const left = (T.endsAt - Date.now()) / 1000;
         const el = document.getElementById('timer');
-        if (el) { el.textContent = mmss(left); el.classList.toggle('low', left < 120); }
+        if (el) { document.getElementById('timerTxt').textContent = mmss(left); el.classList.toggle('low', left < 120); }
         if (left <= 0) { toast('Hết giờ, bài đã được nộp tự động.'); finish(); }
       }, 500);
       const ans = root.querySelector('#ans');

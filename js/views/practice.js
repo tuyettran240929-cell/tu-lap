@@ -22,7 +22,7 @@
       const quota = s.review ? p.s2.review.quota : p.s2.quota;
       const head = `<div class="topbar">
           <div><a class="back" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 2 · ${s.review ? 'Ôn phần yếu' : 'Luyện tập'}</div><div class="t">${s.done ? 'Kết quả luyện tập' : `Câu ${s.i + 1} / ${s.qs.length}`}</div></div>
-          <div class="pill warn" style="padding:10px 16px">Còn ${left}/${quota} lượt AI</div>
+          <div class="pill warn" style="padding:10px 16px">${TL.ui.icon('bot')} Còn ${left}/${quota} lượt AI</div>
         </div>`;
       if (!s.qs.length) return head + '<div class="body"><p>Chưa có câu hỏi luyện tập đã duyệt cho chương này.</p></div>';
       if (s.done) {
@@ -46,7 +46,7 @@
           <div>${s.submitted ? `<button class="btn" data-act="next">${s.i + 1 < s.qs.length ? 'Câu tiếp theo' : 'Xem kết quả'}</button>` : `<button class="btn" data-act="submit" ${s.sel == null ? 'disabled' : ''}>Nộp câu trả lời</button>`}</div>
         </section>
         <aside class="card col gap14" style="flex:1;min-width:300px">
-          <h2>Gia sư AI (có giới hạn)</h2>
+          <h2 style="display:flex;gap:10px;align-items:center"><span class="ichip warm" style="width:34px;height:34px">${TL.ui.icon('bot')}</span>Gia sư AI (có giới hạn)</h2>
           <p class="muted small">Mỗi lần dùng trừ 1 lượt cho cả chương. Chỉ nhờ khi thật cần.</p>
           <button class="btn ghost left" data-act="hint" ${dis(s.submitted)}>Gợi ý (không đưa đáp án)</button>
           <button class="btn ${s.submitted ? 'ghost' : 'muted'} left" data-act="explain" ${dis(!s.submitted)}>Giải thích${s.submitted ? '' : ' · mở sau khi trả lời'}</button>

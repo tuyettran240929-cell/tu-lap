@@ -24,7 +24,7 @@
       const chat = (p.s1.chat || []).map((m) => `<div class="msg ${m.r}">${esc(m.t)}</div>`).join('') || '<div class="ai-box empty">Hỏi bất cứ điều gì về chương này. Ở giai đoạn 1, AI không giới hạn lượt.</div>';
       return `<div class="topbar">
           <div><a class="back" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 1 · Học</div><div class="t">${esc(ch.title)}</div></div>
-          <div class="pill ok" style="padding:10px 16px">AI không giới hạn</div>
+          <div class="pill ok" style="padding:10px 16px">${TL.ui.icon('sparkles')} AI không giới hạn</div>
         </div>
         <div class="body">
           <section style="flex:2;min-width:420px" class="col gap20">
@@ -37,10 +37,10 @@
             ${quiz}
           </section>
           <aside class="card col gap14" style="flex:1;min-width:300px">
-            <h2>Gia sư AI</h2>
+            <h2 style="display:flex;gap:10px;align-items:center"><span class="ichip" style="width:34px;height:34px">${TL.ui.icon('bot')}</span>Gia sư AI</h2>
             <p class="muted small">${TL.ai.online() ? 'Đang dùng mô hình trực tuyến.' : 'Bản offline: trả lời dựa trên nội dung bài giảng.'} Hỏi để hiểu, không phải để chép.</p>
             <div class="chat" id="chat">${chat}</div>
-            <form class="chat-in" id="chatForm"><input id="chatIn" placeholder="Ví dụ: Trung vị khác trung bình thế nào?" aria-label="Câu hỏi cho AI" autocomplete="off"><button class="btn" type="submit">Hỏi</button></form>
+            <form class="chat-in" id="chatForm"><input id="chatIn" placeholder="Ví dụ: Trung vị khác trung bình thế nào?" aria-label="Câu hỏi cho AI" autocomplete="off"><button class="btn" type="submit" aria-label="Hỏi">${TL.ui.icon('send')}</button></form>
           </aside>
         </div>`;
     },

@@ -260,6 +260,126 @@ input,textarea,select{font:inherit;color:inherit}
   [style*="min-width:4"]{min-width:0!important}
 }
 
+/* ===== Giao diện v2 ===== */
+:root{--shadow-sm:0 1px 2px rgba(16,40,34,.06),0 1px 3px rgba(16,40,34,.05);--shadow:0 4px 14px rgba(16,40,34,.07),0 1px 3px rgba(16,40,34,.05);--shadow-lg:0 18px 40px rgba(11,63,56,.16);--radius:16px;--grad:linear-gradient(135deg,#0E7F72 0%,#0B5C53 55%,#0B3F38 100%)}
+html,body{background:radial-gradient(1200px 600px at 100% -10%,#E3F0EB 0%,transparent 60%),radial-gradient(900px 500px at -10% 110%,#F3EBDD 0%,transparent 55%),var(--bg);background-attachment:fixed}
+h1{letter-spacing:-.02em}h2{letter-spacing:-.01em}
+.ico{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+.btn{border-radius:12px;transition:transform .15s,box-shadow .15s,background .15s;box-shadow:0 2px 6px rgba(11,107,97,.25)}
+.btn:not(.ghost):not(.plain):not(.muted):not(.warn):not(.danger){background:var(--grad)}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 16px rgba(11,107,97,.3)}
+.btn:active:not(:disabled){transform:none}
+.btn.ghost,.btn.plain,.btn.muted,.btn.warn,.btn.danger{box-shadow:none}
+.btn.ghost:hover:not(:disabled),.btn.warn:hover:not(:disabled),.btn.danger:hover:not(:disabled){box-shadow:var(--shadow-sm)}
+.card{border:1px solid rgba(217,222,216,.7);border-radius:var(--radius);box-shadow:var(--shadow);background:rgba(255,255,255,.92)}
+.note{border-radius:12px;border:1px solid rgba(138,75,8,.12)}.note.ok{border-color:rgba(11,107,97,.15)}
+.pill{gap:6px;font-weight:600}
+.feedback{border-radius:12px;display:flex;gap:10px;align-items:center}
+.opt{border-radius:12px;transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
+.opt:hover{transform:translateX(2px);box-shadow:var(--shadow-sm)}
+.opt input{accent-color:var(--accent);width:18px;height:18px}
+.field input,.field select,.chat-in input,.drop textarea,.paper textarea{border-radius:12px;border-color:var(--line);transition:border-color .15s,box-shadow .15s;background:#fff}
+.field input:focus,.field select:focus,.chat-in input:focus,.drop textarea:focus,.paper textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(11,107,97,.12)}
+.enter>*{animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* sidebar */
+.side{background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-right:1px solid rgba(217,222,216,.7);gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-size:20px;color:var(--deep)}
+.logo{width:36px;height:36px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:0 4px 12px rgba(11,107,97,.35)}
+.logo .ico{width:20px;height:20px}
+.course-box{margin-top:0;padding:14px;border-radius:14px;background:var(--soft);display:flex;flex-direction:column;gap:8px}
+.course-box b{font-size:14px;color:var(--deep)}
+.course-box .progressbar{height:6px;background:#fff}
+.nav-h{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:-8px}
+.nav a{align-items:center;justify-content:flex-start;gap:12px;padding:10px 12px;border-radius:12px;transition:background .15s;font-size:14px;line-height:1.35}
+.nav a .num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;background:#fff;border:1.5px solid var(--line);color:var(--muted)}
+.nav a.cur .num{border-color:var(--accent);color:var(--accent)}
+.nav a.done .num{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav a.locked .num{background:transparent;border-style:dashed}
+.nav a .num .ico{width:14px;height:14px}
+.nav a .lbl{flex:1;min-width:0}
+.nav a.on{background:#fff;box-shadow:var(--shadow-sm)}
+.nav a:hover{background:rgba(255,255,255,.85)}
+.side-foot .link{display:inline-flex;gap:6px;align-items:center;justify-content:center;text-decoration:none}
+
+/* hero */
+.hero{background:var(--grad);color:#fff;border-radius:22px;padding:28px 32px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.hero:after{content:'';position:absolute;right:-60px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%)}
+.hero h1{color:#fff}.hero p{color:rgba(255,255,255,.82)}
+.hero .btn{background:#fff!important;color:var(--deep);box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.hero .btn:hover{color:var(--deep)}
+.ring{--p:0;width:108px;height:108px;border-radius:50%;background:conic-gradient(#F4C77B calc(var(--p)*1%),rgba(255,255,255,.18) 0);display:grid;place-items:center;flex:none;position:relative;z-index:1}
+.ring>div{width:84px;height:84px;border-radius:50%;background:#0C5A51;display:grid;place-items:center;text-align:center;line-height:1.1}
+.ring b{font-size:24px}.ring span{font-size:11px;opacity:.8}
+.metric{display:flex;gap:14px;align-items:flex-start}
+.ichip{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--soft);color:var(--accent)}
+.ichip.warm{background:var(--warn-bg);color:var(--warn)}.ichip.rose{background:var(--bad-bg);color:var(--bad)}
+.ichip .ico{width:20px;height:20px}
+.metrics .card{transition:transform .2s,box-shadow .2s}.metrics .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.metrics .big{font-size:28px;line-height:1.2}
+.bars .bar{background:linear-gradient(180deg,#D99A3D,#A8620F);border-radius:8px 8px 4px 4px;animation:grow .6s ease both;transform-origin:bottom}
+.bars .bar.q{background:linear-gradient(180deg,#E7ECE7,#DCE2DC)}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+/* stage cards */
+.stages{position:relative;gap:20px}
+.stage{border-radius:16px;padding:20px;gap:6px;background:#fff;transition:transform .2s,box-shadow .2s;position:relative}
+.stage .sh{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.stage .sicon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--accent);flex:none}
+.stage .sicon .ico{width:20px;height:20px}
+.stage .step{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+.stage.cur{border:2px solid var(--accent);box-shadow:0 10px 26px rgba(11,107,97,.16)}
+.stage.cur .sicon{background:var(--grad);color:#fff}
+.stage.done{background:linear-gradient(180deg,#F3FAF7,#fff);border-color:#B9D9CF}
+.stage.done .sicon{background:var(--accent);color:#fff}
+.stage.lock{background:rgba(255,255,255,.5)}
+.stage.lock .sicon{background:#EEF1ED;color:var(--grey)}
+.stage:not(.lock):hover{transform:translateY(-2px)}
+.stage a.s{display:inline-flex;align-items:center;gap:6px;text-decoration:none;margin-top:auto;padding-top:6px}
+.stage a.s:hover{gap:10px}
+.stages .stage:not(:last-child):after{content:'';position:absolute;right:-16px;top:38px;width:12px;height:2px;background:var(--line)}
+
+/* topbar pages */
+.topbar{background:rgba(255,255,255,.75);backdrop-filter:blur(10px);position:sticky;top:0;z-index:5}
+.dark .topbar{background:rgba(23,35,31,.85)}
+.tabs button{transition:all .15s}.tabs button:hover{border-color:var(--grey)}
+.msg{border-radius:14px;animation:pop .2s ease both}
+.msg.me{background:var(--grad);border-bottom-right-radius:4px}
+.msg.ai{border-bottom-left-radius:4px;border:1px solid rgba(11,107,97,.1)}
+.chat-in .btn{padding:0 18px}
+.lesson{font-size:16.5px}
+.drop{border-radius:18px;border-color:#C5CEC8;background:rgba(255,255,255,.85);transition:all .2s}
+.drop:hover{border-color:var(--accent)}
+.drop .dicon{width:52px;height:52px;margin:0 auto 10px;border-radius:16px;display:grid;place-items:center;background:var(--soft);color:var(--accent)}
+.drop .dicon .ico{width:24px;height:24px}
+.chap{border-radius:14px;background:#fff;transition:box-shadow .15s}
+.chap:hover{box-shadow:var(--shadow-sm)}
+.chip{transition:transform .15s,box-shadow .15s;border:1px solid rgba(11,107,97,.12)}
+.chip:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.qrow{border-radius:14px;box-shadow:var(--shadow-sm)}
+.progressbar>div{background:linear-gradient(90deg,#14907F,#0B6B61);transition:width .5s}
+
+/* dark test */
+.dark{background:radial-gradient(900px 500px at 90% -10%,#20352F,transparent 60%),#121C19}
+.paper{border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.dpanel{border-radius:16px;background:rgba(255,255,255,.03)}
+.dbtn{border-radius:12px;display:flex;align-items:center;gap:10px;transition:background .15s}
+.dbtn:hover{background:rgba(255,255,255,.05)}
+.dpill{display:inline-flex;gap:6px;align-items:center}
+.timer{display:inline-flex;gap:6px;align-items:center;font-size:16px;padding:8px 16px}
+.timer.low{animation:pulse 1s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(244,199,123,.25)}}
+.qdots button{border-radius:10px;width:36px;height:36px;transition:all .15s}
+
+.modal{border-radius:18px;box-shadow:var(--shadow-lg);animation:pop .2s ease both}
+.modal-bg{backdrop-filter:blur(3px)}
+#toast{border-radius:12px;box-shadow:var(--shadow-lg)}
+.result-score{font-size:56px;font-weight:700;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:900px){.hero{padding:22px}.stages .stage:after{display:none}.side{backdrop-filter:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -953,21 +1073,49 @@ window.TL = window.TL || {};
   const chLabel = (ch) => `Chương ${S().chIndex(ch.id) + 1}`;
   const topicTitle = (ch, id) => (ch.topics.find((t) => t.id === id) || {}).title || 'Chủ đề';
 
+  const ICONS = {
+    book: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14zM6.5 17A2.5 2.5 0 0 0 4 19.5 2.5 2.5 0 0 0 6.5 22H20v-5',
+    target: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
+    shield: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', shieldCheck: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4',
+    lock: 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4', check: 'M20 6 9 17l-5-5',
+    sparkles: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z',
+    upload: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12',
+    settings: 'M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6',
+    clock: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2', bot: 'M12 8V4H8M4 8h16v12H4zM2 14h2M20 14h2M15 13v2M9 13v2',
+    chart: 'M3 3v18h18M7 16v-5M12 16V8M17 16v-8', arrow: 'M5 12h14M12 5l7 7-7 7', back: 'M19 12H5M12 19l-7-7 7-7',
+    trophy: 'M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3',
+    trend: 'M23 6l-9.5 9.5-5-5L1 18M17 6h6v6', alert: 'M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z',
+    file: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5', send: 'M22 2 11 13M22 2l-7 20-4-9-9-4z',
+    calc: 'M4 2h16v20H4zM8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01',
+    pencil: 'M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z', sigma: 'M18 7V4H6l6 8-6 8h12v-3', botOff: 'M2 2l20 20M12 8V4H8M8 8h12v8M20 20H4V8M9 13v2',
+    leaf: 'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10zM2 21c0-3 1.9-5.4 5.1-6',
+  };
+  const icon = (n, cls = '') => `<svg class="ico ${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS[n] || ''}"/></svg>`;
+  function overall() {
+    const chs = S().state.course.chapters; if (!chs.length) return 0;
+    return Math.round((chs.reduce((s, c) => s + Math.min(S().stageOf(c.id) - 1, 3), 0) / (chs.length * 3)) * 100);
+  }
+
   function sidebar(activeId) {
     const st = S().state;
     const items = st.course.chapters.map((c, i) => {
       const un = S().unlocked(c.id);
       const stage = S().stageOf(c.id);
-      const tag = !un ? 'Khoá' : stage === 4 ? 'Xong' : 'GĐ' + stage;
-      return `<a href="#/ch/${c.id}" class="${c.id === activeId ? 'on' : ''} ${un ? '' : 'locked'}" data-ch="${c.id}"><span>Chương ${i + 1} · ${esc(c.title)}</span><span class="st">${tag}</span></a>`;
+      const cls = !un ? 'locked' : stage === 4 ? 'done' : 'cur';
+      const num = !un ? icon('lock') : stage === 4 ? icon('check') : i + 1;
+      const tag = !un ? 'Khoá' : stage === 4 ? 'Hoàn thành' : ['', 'Học', 'Luyện tập', 'Kiểm tra'][stage];
+      return `<a href="#/ch/${c.id}" class="${c.id === activeId ? 'on' : ''} ${cls}" data-ch="${c.id}"><span class="num">${num}</span><span class="lbl">${esc(c.title)}<br><span class="st">Chương ${i + 1} · ${tag}</span></span></a>`;
     }).join('');
+    const pc = overall();
     return `<aside class="side">
-      <a class="brand" href="#/">Tự Lập</a>
-      <div class="course-title">${esc(st.course.title)}${st.course.source === 'demo' ? ' (mẫu)' : ''}</div>
+      <a class="brand" href="#/"><span class="logo">${icon('leaf')}</span>Tự Lập</a>
+      <div class="course-box"><b>${esc(st.course.title)}${st.course.source === 'demo' ? ' (mẫu)' : ''}</b>
+        <div class="progressbar"><div style="width:${pc}%"></div></div><span class="xs muted">Hoàn thành ${pc}% khoá học</span></div>
+      <div class="nav-h">Chương học</div>
       <nav class="nav" aria-label="Chương">${items}</nav>
       <div class="side-foot">
-        <a class="btn ghost" href="#/upload">Tải bài giảng lên</a>
-        <a class="link" href="#/settings">Cài đặt</a>
+        <a class="btn ghost" href="#/upload">${icon('upload')} Tải bài giảng lên</a>
+        <a class="link" href="#/settings">${icon('settings')} Cài đặt</a>
       </div>
     </aside>`;
   }
@@ -1043,7 +1191,7 @@ window.TL = window.TL || {};
 
   function cooldownLeft(id) { return Math.max(0, S().prog(id).s3.cooldownUntil - Date.now()); }
 
-  TL.ui = { sidebar, withSidebar, chLabel, topicTitle, stageQuestions, isCorrect, optionList, riskOf, labelInfo, LABELS, levelText, cooldownLeft };
+  TL.ui = { icon, overall, sidebar, withSidebar, chLabel, topicTitle, stageQuestions, isCorrect, optionList, riskOf, labelInfo, LABELS, levelText, cooldownLeft };
 })(window.TL);
 
 </script>
@@ -1095,23 +1243,24 @@ window.TL = window.TL || {};
     const set = S().state.settings;
     const left = S().aiLeft(ch.id);
     const un = S().unlocked(ch.id);
-    const card = (cls, title, sub, foot) => `<div class="stage ${cls}"><div style="font-weight:600">${title}</div><div class="muted small" style="margin:4px 0 10px">${sub}</div>${foot}</div>`;
+    const ICO = { '1. Học': 'book', '2. Luyện tập': 'target', '3. Kiểm tra': 'shieldCheck' };
+    const card = (cls, title, sub, foot) => `<div class="stage ${cls}"><div class="sh"><span class="sicon">${TL.ui.icon(cls === 'done' ? 'check' : cls === 'lock' ? 'lock' : ICO[title])}</span><div><div class="step">Giai đoạn ${title[0]}</div><div style="font-weight:700">${title.slice(3)}</div></div></div><div class="muted small" style="margin:0 0 6px">${sub}</div>${foot}</div>`;
     const lastAtt = p.s3.attempts[p.s3.attempts.length - 1];
     const c1 = st > 1
       ? card('done', '1. Học', 'AI không giới hạn', `<div class="s" style="color:var(--accent)">Đã qua · quiz đạt ${p.s1.best}%</div><a class="small" href="#/learn/${ch.id}">Xem lại bài giảng</a>`)
-      : card('cur', '1. Học', 'AI không giới hạn', `${p.s1.focus.length ? `<div class="small" style="color:var(--warn)">Ôn lại: ${p.s1.focus.map((t) => esc(TL.ui.topicTitle(ch, t))).join(', ')}</div>` : ''}<a class="s" href="#/learn/${ch.id}">${p.s1.best != null ? 'Tiếp tục học' : 'Bắt đầu học'}</a>`);
+      : card('cur', '1. Học', 'AI không giới hạn', `${p.s1.focus.length ? `<div class="small" style="color:var(--warn)">Ôn lại: ${p.s1.focus.map((t) => esc(TL.ui.topicTitle(ch, t))).join(', ')}</div>` : ''}<a class="s" href="#/learn/${ch.id}">${p.s1.best != null ? 'Tiếp tục học' : 'Bắt đầu học'} ${TL.ui.icon('arrow')}</a>`);
     const review = p.s2.review && !p.s2.review.done;
     const c2 = st < 2
       ? card('lock', '2. Luyện tập', `AI tối đa ${p.s2.quota} lượt`, `<div class="small">Mở khi quiz GĐ1 đạt từ ${set.quizPass}%</div>`)
       : st === 2 || review
-        ? card('cur', '2. Luyện tập', `AI còn ${left}/${review ? p.s2.review.quota : p.s2.quota} lượt`, `<a class="s" href="#/practice/${ch.id}">${review ? 'Ôn phần yếu' : p.s2.runs.length ? 'Tiếp tục luyện tập' : 'Bắt đầu luyện tập'}</a>`)
+        ? card('cur', '2. Luyện tập', `AI còn ${left}/${review ? p.s2.review.quota : p.s2.quota} lượt`, `<a class="s" href="#/practice/${ch.id}">${review ? 'Ôn phần yếu' : p.s2.runs.length ? 'Tiếp tục luyện tập' : 'Bắt đầu luyện tập'} ${TL.ui.icon('arrow')}</a>`)
         : card('done', '2. Luyện tập', `AI đã dùng ${S().aiUsedTotal(ch.id)}/${p.s2.quota} lượt`, `<div class="s" style="color:var(--accent)">Đã qua · đúng ${p.s2.best}%</div><a class="small" href="#/practice/${ch.id}">Luyện thêm</a>`);
     let c3;
     if (st < 3) c3 = card('lock', '3. Kiểm tra', 'Không dùng AI', `<div class="small">Mở khi đúng từ ${set.practiceUnlock}% ở giai đoạn 2</div>`);
     else if (st === 4) c3 = card('done', '3. Kiểm tra', 'Không dùng AI', `<div class="s" style="color:var(--accent)">Đã qua · ${lastAtt.score}%</div><a class="small" href="#/report/${ch.id}">Báo cáo liêm chính</a>`);
     else {
       const cd = TL.ui.cooldownLeft(ch.id);
-      c3 = card('cur', '3. Kiểm tra', `Không dùng AI · ${set.testMinutes} phút`, `${cd ? `<div class="s" style="color:var(--warn)">Thi lại sau <span data-cd="${ch.id}">${hhmm(cd)}</span></div>` : `<a class="s" href="#/test/${ch.id}">${p.s3.attempts.length ? 'Làm đề biến thể' : 'Vào kiểm tra'}</a>`}${lastAtt ? `<a class="small" href="#/result/${ch.id}">Kết quả lần ${p.s3.attempts.length}</a>` : ''}`);
+      c3 = card('cur', '3. Kiểm tra', `Không dùng AI · ${set.testMinutes} phút`, `${cd ? `<div class="s" style="color:var(--warn)">Thi lại sau <span data-cd="${ch.id}">${hhmm(cd)}</span></div>` : `<a class="s" href="#/test/${ch.id}">${p.s3.attempts.length ? 'Làm đề biến thể' : 'Vào kiểm tra'} ${TL.ui.icon('arrow')}</a>`}${lastAtt ? `<a class="small" href="#/result/${ch.id}">Kết quả lần ${p.s3.attempts.length}</a>` : ''}`);
     }
     return `<section class="card">
       <h2 style="margin:0 0 16px">${TL.ui.chLabel(ch)} · ${esc(ch.title)}${un ? '' : ' <span class="pill" style="margin-left:8px">Chưa mở</span>'}</h2>
@@ -1126,17 +1275,28 @@ window.TL = window.TL || {};
       const ch = S().chapter(chId) || S().state.course.chapters[0];
       if (!ch) return TL.ui.withSidebar(null, '<h1>Chưa có khoá học</h1><a class="btn" href="#/upload">Tải bài giảng lên</a>');
       const m = metrics();
+      const cur = S().chapter(S().currentChapterId()) || ch;
+      const cs = S().stageOf(cur.id);
+      const next = cs === 1 ? { href: '#/learn/' + cur.id, label: 'Tiếp tục học' } : cs === 2 || (S().prog(cur.id).s2.review && !S().prog(cur.id).s2.review.done) ? { href: '#/practice/' + cur.id, label: 'Vào luyện tập' } : cs === 3 ? { href: '#/test/' + cur.id, label: 'Vào kiểm tra' } : { href: '#/ch/' + cur.id, label: 'Xem lại khoá học' };
       const fresh = !Object.values(S().state.progress).some((p) => p.s1.best != null);
       return TL.ui.withSidebar(ch.id, `
-        <header><h1 style="margin:0 0 6px">Tiến độ của bạn</h1><p class="muted">Mục tiêu: càng về sau càng ít cần AI.</p></header>
+        <section class="hero">
+          <div style="position:relative;z-index:1;max-width:520px" class="col gap10">
+            <span class="pill" style="background:rgba(255,255,255,.16);color:#fff;align-self:flex-start">${TL.ui.icon('sparkles')} Học giảm dần AI</span>
+            <h1>Tiến độ của bạn</h1>
+            <p>Mục tiêu: càng về sau càng ít cần AI. Bạn đang ở <b style="color:#fff">${TL.ui.chLabel(cur)} · ${esc(cur.title)}</b>.</p>
+            <div><a class="btn" href="${next.href}" style="margin-top:6px">${next.label} ${TL.ui.icon('arrow')}</a></div>
+          </div>
+          <div class="ring" style="--p:${TL.ui.overall()}"><div><b>${TL.ui.overall()}%</b><span>khoá học</span></div></div>
+        </section>
         ${fresh ? `<div class="note ok">Mỗi chương có 3 giai đoạn: <b>Học</b> với AI không giới hạn → <b>Luyện tập</b> với số lượt AI giảm dần theo chương → <b>Kiểm tra</b> không có AI. Bắt đầu từ ${TL.ui.chLabel(ch)} bên dưới.</div>` : ''}
         <section class="metrics">
-          <div class="card"><div class="muted small">Qua giai đoạn 3 ngay lần đầu</div><div class="big" style="margin-top:8px">${m.firstTry}</div></div>
-          <div class="card"><div class="muted small">Chênh lệch điểm GĐ2 – GĐ3</div><div class="big" style="margin-top:8px">${m.gap}</div></div>
-          <div class="card"><div class="muted small">Lượt AI trung bình mỗi chương</div><div class="big" style="margin-top:8px">${m.ai}</div></div>
+          <div class="card metric"><span class="ichip">${TL.ui.icon('trophy')}</span><div><div class="muted small">Qua giai đoạn 3 ngay lần đầu</div><div class="big" style="margin-top:4px">${m.firstTry}</div></div></div>
+          <div class="card metric"><span class="ichip warm">${TL.ui.icon('trend')}</span><div><div class="muted small">Chênh lệch điểm GĐ2 – GĐ3</div><div class="big" style="margin-top:4px">${m.gap}</div></div></div>
+          <div class="card metric"><span class="ichip">${TL.ui.icon('bot')}</span><div><div class="muted small">Lượt AI trung bình mỗi chương</div><div class="big" style="margin-top:4px">${m.ai}</div></div></div>
         </section>
         <section class="card">
-          <h2 style="margin:0 0 4px">Lượt AI đã dùng theo chương</h2>
+          <h2 style="margin:0 0 4px;display:flex;gap:10px;align-items:center"><span class="ichip" style="width:34px;height:34px">${TL.ui.icon('chart')}</span>Lượt AI đã dùng theo chương</h2>
           <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 20px"><p class="muted small">Giai đoạn 2: giảm dần từ 5 xuống 1 lượt.</p>
           <div class="legend"><span><i style="background:var(--warn)"></i>Đã dùng</span><span><i style="border-top:2px dashed var(--grey);height:0"></i>Hạn mức</span><span><i style="background:var(--line)"></i>Chưa bắt đầu</span></div></div>
           <div class="bars">${bars()}</div>
@@ -1183,7 +1343,7 @@ window.TL = window.TL || {};
       const chat = (p.s1.chat || []).map((m) => `<div class="msg ${m.r}">${esc(m.t)}</div>`).join('') || '<div class="ai-box empty">Hỏi bất cứ điều gì về chương này. Ở giai đoạn 1, AI không giới hạn lượt.</div>';
       return `<div class="topbar">
           <div><a class="back" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 1 · Học</div><div class="t">${esc(ch.title)}</div></div>
-          <div class="pill ok" style="padding:10px 16px">AI không giới hạn</div>
+          <div class="pill ok" style="padding:10px 16px">${TL.ui.icon('sparkles')} AI không giới hạn</div>
         </div>
         <div class="body">
           <section style="flex:2;min-width:420px" class="col gap20">
@@ -1196,10 +1356,10 @@ window.TL = window.TL || {};
             ${quiz}
           </section>
           <aside class="card col gap14" style="flex:1;min-width:300px">
-            <h2>Gia sư AI</h2>
+            <h2 style="display:flex;gap:10px;align-items:center"><span class="ichip" style="width:34px;height:34px">${TL.ui.icon('bot')}</span>Gia sư AI</h2>
             <p class="muted small">${TL.ai.online() ? 'Đang dùng mô hình trực tuyến.' : 'Bản offline: trả lời dựa trên nội dung bài giảng.'} Hỏi để hiểu, không phải để chép.</p>
             <div class="chat" id="chat">${chat}</div>
-            <form class="chat-in" id="chatForm"><input id="chatIn" placeholder="Ví dụ: Trung vị khác trung bình thế nào?" aria-label="Câu hỏi cho AI" autocomplete="off"><button class="btn" type="submit">Hỏi</button></form>
+            <form class="chat-in" id="chatForm"><input id="chatIn" placeholder="Ví dụ: Trung vị khác trung bình thế nào?" aria-label="Câu hỏi cho AI" autocomplete="off"><button class="btn" type="submit" aria-label="Hỏi">${TL.ui.icon('send')}</button></form>
           </aside>
         </div>`;
     },
@@ -1261,7 +1421,7 @@ window.TL = window.TL || {};
       const quota = s.review ? p.s2.review.quota : p.s2.quota;
       const head = `<div class="topbar">
           <div><a class="back" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 2 · ${s.review ? 'Ôn phần yếu' : 'Luyện tập'}</div><div class="t">${s.done ? 'Kết quả luyện tập' : `Câu ${s.i + 1} / ${s.qs.length}`}</div></div>
-          <div class="pill warn" style="padding:10px 16px">Còn ${left}/${quota} lượt AI</div>
+          <div class="pill warn" style="padding:10px 16px">${TL.ui.icon('bot')} Còn ${left}/${quota} lượt AI</div>
         </div>`;
       if (!s.qs.length) return head + '<div class="body"><p>Chưa có câu hỏi luyện tập đã duyệt cho chương này.</p></div>';
       if (s.done) {
@@ -1285,7 +1445,7 @@ window.TL = window.TL || {};
           <div>${s.submitted ? `<button class="btn" data-act="next">${s.i + 1 < s.qs.length ? 'Câu tiếp theo' : 'Xem kết quả'}</button>` : `<button class="btn" data-act="submit" ${s.sel == null ? 'disabled' : ''}>Nộp câu trả lời</button>`}</div>
         </section>
         <aside class="card col gap14" style="flex:1;min-width:300px">
-          <h2>Gia sư AI (có giới hạn)</h2>
+          <h2 style="display:flex;gap:10px;align-items:center"><span class="ichip warm" style="width:34px;height:34px">${TL.ui.icon('bot')}</span>Gia sư AI (có giới hạn)</h2>
           <p class="muted small">Mỗi lần dùng trừ 1 lượt cho cả chương. Chỉ nhờ khi thật cần.</p>
           <button class="btn ghost left" data-act="hint" ${dis(s.submitted)}>Gợi ý (không đưa đáp án)</button>
           <button class="btn ${s.submitted ? 'ghost' : 'muted'} left" data-act="explain" ${dis(!s.submitted)}>Giải thích${s.submitted ? '' : ' · mở sau khi trả lời'}</button>
@@ -1426,7 +1586,7 @@ window.TL = window.TL || {};
         if (S().stageOf(id) < 3) block = `Cần đúng từ ${set.practiceUnlock}% ở giai đoạn 2 để mở bài kiểm tra.`;
         else if (p.s3.passed) block = 'Bạn đã qua giai đoạn 3 của chương này.';
         else if (TL.ui.cooldownLeft(id)) block = `Đề biến thể tiếp theo mở sau ${hhmm(TL.ui.cooldownLeft(id))}. Trong lúc chờ, hãy ôn phần yếu ở giai đoạn 2.`;
-        return `<div class="dark"><div class="topbar"><div><a class="back" style="color:var(--dark-muted)" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 3 · Kiểm tra có giám sát</div><div class="t">${esc(ch.title)}</div></div><span class="dpill">AI đã tắt</span></div>
+        return `<div class="dark"><div class="topbar"><div><a class="back" style="color:var(--dark-muted)" href="#/ch/${id}">← Tiến độ</a><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 3 · Kiểm tra có giám sát</div><div class="t">${esc(ch.title)}</div></div><span class="dpill">${TL.ui.icon('botOff')} AI đã tắt</span></div>
           <div class="body"><section class="paper" style="flex:1;max-width:760px">
             <h1>Trước khi bắt đầu</h1>
             <ul style="margin:0;padding-left:20px;line-height:1.9">
@@ -1453,7 +1613,7 @@ window.TL = window.TL || {};
       return `<div class="dark">
         <div class="topbar">
           <div><div class="muted small">${TL.ui.chLabel(ch)} · Giai đoạn 3 · Kiểm tra có giám sát</div><div class="t">Câu ${T.i + 1} / ${T.qs.length}</div></div>
-          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span class="dpill">AI đã tắt</span><span class="timer ${left < 120 ? 'low' : ''}" id="timer" aria-label="Thời gian còn lại">${mmss(left)}</span></div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span class="dpill">${TL.ui.icon('botOff')} AI đã tắt</span><span class="timer ${left < 120 ? 'low' : ''}" id="timer" aria-label="Thời gian còn lại">${TL.ui.icon('clock')}<span id="timerTxt">${mmss(left)}</span></span></div>
         </div>
         <div class="body">
           <section class="paper" style="flex:2;min-width:420px">
@@ -1468,9 +1628,9 @@ window.TL = window.TL || {};
             <div class="dpanel"><h3>Câu hỏi</h3><div class="qdots">${T.qs.map((_, i) => `<button data-go="${i}" class="${i === T.i ? 'on' : T.answers[i] !== '' ? 'ans' : ''}" aria-label="Câu ${i + 1}">${i + 1}</button>`).join('')}</div></div>
             <div class="dpanel">
               <h3>Công cụ trong trang</h3>
-              <button class="dbtn ${T.tool === 'calc' ? 'on' : ''}" data-tool="calc">Máy tính</button>
-              <button class="dbtn ${T.tool === 'scratch' ? 'on' : ''}" data-tool="scratch">Giấy nháp</button>
-              <button class="dbtn ${T.tool === 'formula' ? 'on' : ''}" data-tool="formula">Bảng công thức</button>
+              <button class="dbtn ${T.tool === 'calc' ? 'on' : ''}" data-tool="calc">${TL.ui.icon('calc')} Máy tính</button>
+              <button class="dbtn ${T.tool === 'scratch' ? 'on' : ''}" data-tool="scratch">${TL.ui.icon('pencil')} Giấy nháp</button>
+              <button class="dbtn ${T.tool === 'formula' ? 'on' : ''}" data-tool="formula">${TL.ui.icon('sigma')} Bảng công thức</button>
               ${tool}
             </div>
             <div class="dpanel" style="gap:8px">
@@ -1490,7 +1650,7 @@ window.TL = window.TL || {};
       tick = setInterval(() => {
         const left = (T.endsAt - Date.now()) / 1000;
         const el = document.getElementById('timer');
-        if (el) { el.textContent = mmss(left); el.classList.toggle('low', left < 120); }
+        if (el) { document.getElementById('timerTxt').textContent = mmss(left); el.classList.toggle('low', left < 120); }
         if (left <= 0) { toast('Hết giờ, bài đã được nộp tự động.'); finish(); }
       }, 500);
       const ans = root.querySelector('#ans');
@@ -1541,7 +1701,7 @@ window.TL = window.TL || {};
       const weak = att.weak.length ? att.weak.map((t) => `<li>${esc(TL.ui.topicTitle(ch, t))}</li>`).join('') : '<li>Không có chủ đề dưới 70%</li>';
       const scoreCard = `<section class="card col gap14" style="flex:1;min-width:360px;padding:28px">
           <div class="muted small">Điểm của bạn</div>
-          <div style="font-size:48px;font-weight:700">${att.score}%</div>
+          <div class="result-score">${att.score}%</div>
           <div class="muted">Ngưỡng qua: ${set.testPass}% (cấu hình được)</div>
           <div class="progressbar"><div style="width:${att.score}%;background:${att.passed ? 'var(--accent)' : 'var(--warn)'}"></div></div>
           <h3 style="margin-top:12px">${att.passed ? 'Chủ đề nên củng cố' : 'Phần còn yếu'}</h3>
@@ -1684,14 +1844,14 @@ window.TL = window.TL || {};
         <div class="row">
           <section class="col gap16" style="flex:1;min-width:360px">
             <div class="drop" data-drop="lecture">
-              <div style="font-weight:600;margin-bottom:6px">Bài giảng</div>
+              <div class="dicon">${TL.ui.icon('file')}</div><div style="font-weight:600;margin-bottom:6px">Bài giảng</div>
               <div class="muted small" style="margin-bottom:14px">PDF, PPTX, DOCX hoặc văn bản (.txt, .md)</div>
-              <label class="btn">Chọn tệp<input type="file" id="fLecture" accept=".pdf,.pptx,.docx,.txt,.md" hidden></label>
+              <label class="btn">${TL.ui.icon('upload')} Chọn tệp<input type="file" id="fLecture" accept=".pdf,.pptx,.docx,.txt,.md" hidden></label>
               <div class="small" id="lecName" style="margin-top:8px">${esc(S().state.draftName || '')}</div>
               <textarea id="tLecture" rows="5" placeholder="…hoặc dán nội dung bài giảng vào đây">${esc(lectureText)}</textarea>
             </div>
             <div class="drop" data-drop="questions">
-              <div style="font-weight:600;margin-bottom:6px">Câu hỏi (không bắt buộc)</div>
+              <div class="dicon">${TL.ui.icon('sparkles')}</div><div style="font-weight:600;margin-bottom:6px">Câu hỏi (không bắt buộc)</div>
               <div class="muted small" style="margin-bottom:14px">CSV, JSON hoặc dán trực tiếp. Cột: chuong, chu_de, cau_hoi, A, B, C, D, dap_an, giai_thich</div>
               <label class="btn ghost">Chọn tệp hoặc dán<input type="file" id="fQuestions" accept=".csv,.json,.txt" hidden></label>
               <textarea id="tQuestions" rows="3" placeholder="chuong,cau_hoi,A,B,C,D,dap_an">${esc(questionText)}</textarea>
@@ -1915,6 +2075,7 @@ Tổng doanh thu bằng giá nhân với lượng bán. Khi cầu co giãn, gi�
     const changed = currentKey !== r.key;
     const y = window.scrollY;
     root.innerHTML = view.render(r.params);
+    if (changed) { root.classList.remove('enter'); void root.offsetWidth; root.classList.add('enter'); }
     if (view.mount) view.mount(root, r.params);
     current = { view }; currentKey = r.key;
     if (changed) window.scrollTo(0, 0); else window.scrollTo(0, y);
